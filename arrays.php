@@ -1,0 +1,5 @@
+<?php
+    $numeros = array(1, 2, 3, 4, 5);
+    echo $numeros[0] . "<br>";
+
+    print_r($numeros);
