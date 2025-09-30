@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de test</title>
+</head>
+<body>
+    <form action="tests.php" method="POST">
+        <label for="asignatura">Asignatura</label>
+        <select name="asignatura" id="asignatura">
+            <option value="matematicas">Matematicas</option>
+            <option value="ingles">Ingles</option>
+            <option value="historia">Historia</option>
+            <option value="biologia">Biologia</option>
+        </select>
+
+        <br>
+        <label for="preguntas">Indica el numero de preguntas</label>
+        <input name="preguntas" id="preguntas" type="number" min="0" max="5">
+
+        <br>
+        <input type="submit" value="Generar">
+
+    </form>
+</body>
+</html>
