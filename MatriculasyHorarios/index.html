@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrículas y horarios</title>
+</head>
+<body>
+    <h2>Seleccione las asignaturas en las que desea matricularse</h2>
+
+    <form method="POST" action="procesar.php">
+        <label><input type="checkbox" name="asignaturas[]" value="dwec"> Desarrollo Web Entorno Cliente</label><br>
+        <label><input type="checkbox" name="asignaturas[]" value="dwes"> Desarrollo Web Entorno Servidor</label><br>
+        <label><input type="checkbox" name="asignaturas[]" value="diw"> Desarrollo Interfaces Web</label><br>
+        <label><input type="checkbox" name="asignaturas[]" value="daw"> Despliegue de aplicaciones web</label><br>
+        <label><input type="checkbox" name="asignaturas[]" value="Inglés"> Inglés</label><br>
+        <label><input type="checkbox" name="asignaturas[]" value="optativa">Libre Optativa</label><br>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
