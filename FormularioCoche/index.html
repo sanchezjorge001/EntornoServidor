@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Personaliza tu Coche</title>
+    <style>
+        label { display: block; margin: 5px 0; }
+        .section-title { font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Personaliza tu Coche</h1>
+    <form action="procesar.php" method="POST">
+        <div>
+            <p class="section-title">Modelo (Obligatorio):</p>
+            <label><input type="radio" name="modelo" value="Compacto" required> Compacto</label>
+            <label><input type="radio" name="modelo" value="Sedán"> Sedán</label>
+            <label><input type="radio" name="modelo" value="SUV"> SUV</label>
+        </div>
+
+        <div>
+            <p class="section-title">Motor (Obligatorio):</p>
+            <label><input type="radio" name="motor" value="Gasolina 1.6L" required> Gasolina 1.6L</label>
+            <label><input type="radio" name="motor" value="Diesel 2.0L"> Diesel 2.0L</label>
+            <label><input type="radio" name="motor" value="Eléctrico 75 kWh"> Eléctrico 75 kWh</label>
+        </div>
+
+        <div>
+            <p class="section-title">Color (Obligatorio):</p>
+            <label><input type="radio" name="color" value="Blanco" required> Blanco</label>
+            <label><input type="radio" name="color" value="Negro"> Negro</label>
+            <label><input type="radio" name="color" value="Azul Metálico"> Azul Metálico</label>
+            <label><input type="radio" name="color" value="Rojo"> Rojo</label>
+        </div>
+
+        <div>
+            <p class="section-title">Llantas (Obligatorio):</p>
+            <label><input type="radio" name="llantas" value="16&quot; Aleación" required> 16" Aleación</label>
+            <label><input type="radio" name="llantas" value="18&quot; Aleación"> 18" Aleación</label>
+            <label><input type="radio" name="llantas" value="20&quot; Deportivo"> 20" Deportivo</label>
+        </div>
+
+        <div>
+            <p class="section-title">Equipamiento (Obligatorio):</p>
+            <label><input type="radio" name="equipamiento" value="Básico" required> Básico</label>
+            <label><input type="radio" name="equipamiento" value="Confort"> Confort</label>
+            <label><input type="radio" name="equipamiento" value="Premium"> Premium</label>
+        </div>
+
+        <div>
+            <p class="section-title">Accesorios Opcionales (Opcional):</p>
+            <label><input type="checkbox" name="accesorios[]" value="Techo Panorámico"> Techo Panorámico</label>
+            <label><input type="checkbox" name="accesorios[]" value="Asientos de Cuero"> Asientos de Cuero</label>
+            <label><input type="checkbox" name="accesorios[]" value="Sistema de Sonido Premium"> Sistema de Sonido Premium</label>
+            <label><input type="checkbox" name="accesorios[]" value="Cámara de 360°"> Cámara de 360°</label>
+            <label><input type="checkbox" name="accesorios[]" value="Paquete Deportivo"> Paquete Deportivo</label>
+            <label><input type="checkbox" name="accesorios[]" value="Control de Crucero Adaptativo"> Control de Crucero Adaptativo</label>
+            <label><input type="checkbox" name="accesorios[]" value="Sensores de Aparcamiento"> Sensores de Aparcamiento</label>
+            <label><input type="checkbox" name="accesorios[]" value="Maletero Eléctrico"> Maletero Eléctrico</label>
+        </div>
+
+        <div>
+            <p class="section-title">Cantidad de Coches (1 a 5):</p>
+            <input type="number" name="cantidad" min="1" max="5" value="1" required>
+        </div>
+
+        <div>
+            <p class="section-title">Código de Descuento (Opcional):</p>
+            <input type="text" name="codigo_descuento" maxlength="20" placeholder="Ingresa código">
+        </div>
+
+        <div style="margin-top: 20px;">
+            <button type="submit">Calcular Precio</button>
+        </div>
+    </form>
+</body>
+</html>
