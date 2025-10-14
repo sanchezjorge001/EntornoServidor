@@ -1,78 +1,119 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Personaliza tu Coche</title>
-    <style>
-        label { display: block; margin: 5px 0; }
-        .section-title { font-weight: bold; margin-top: 20px; }
-    </style>
+    <meta charset="UTF-8">
+    <title>Concesionario</title>
 </head>
+
 <body>
-    <h1>Personaliza tu Coche</h1>
     <form action="procesar.php" method="POST">
-        <div>
-            <p class="section-title">Modelo (Obligatorio):</p>
-            <label><input type="radio" name="modelo" value="Compacto" required> Compacto</label>
-            <label><input type="radio" name="modelo" value="Sedán"> Sedán</label>
-            <label><input type="radio" name="modelo" value="SUV"> SUV</label>
-        </div>
+        <fieldset>
+            <legend>Selecciona tu vehículo:</legend>
+            <label><b>Modelo:</b></label>
+            <label>
+                <input name="Modelo" value="Compacto" type="radio"> Compacto
+            </label>
+            <label>
+                <input name="Modelo" value="Sedán" type="radio"> Sedán
+            </label>
+            <label>
+                <input name="Modelo" value="SUV" type="radio"> SUV
+            </label>
 
-        <div>
-            <p class="section-title">Motor (Obligatorio):</p>
-            <label><input type="radio" name="motor" value="Gasolina 1.6L" required> Gasolina 1.6L</label>
-            <label><input type="radio" name="motor" value="Diesel 2.0L"> Diesel 2.0L</label>
-            <label><input type="radio" name="motor" value="Eléctrico 75 kWh"> Eléctrico 75 kWh</label>
-        </div>
+            <br><label><b>Motor:</b></label>
+            <label>
+                <input name="Motor" value="Gasolina 1.6L" type="radio"> Gasolina 1.6L
+            </label>
+            <label>
+                <input name="Motor" value="Diesel 2.0L" type="radio"> Diesel 2.0L
+            </label>
+            <label>
+                <input name="Motor" value="Eléctrico 75 kWh" type="radio"> Eléctrico 75 kWh
+            </label>
 
-        <div>
-            <p class="section-title">Color (Obligatorio):</p>
-            <label><input type="radio" name="color" value="Blanco" required> Blanco</label>
-            <label><input type="radio" name="color" value="Negro"> Negro</label>
-            <label><input type="radio" name="color" value="Azul Metálico"> Azul Metálico</label>
-            <label><input type="radio" name="color" value="Rojo"> Rojo</label>
-        </div>
+            <br><label><b>Color:</b></label>
+            <label>
+                <input name="Color" value="Blanco" type="radio"> Blanco
+            </label>
+            <label>
+                <input name="Color" value="Negro" type="radio"> Negro
+            </label>
+            <label>
+                <input name="Color" value="Azul Metálico" type="radio"> Azul Metálico
+            </label>
+            <label>
+                <input name="Color" value="Rojo" type="radio"> Rojo
+            </label>
 
-        <div>
-            <p class="section-title">Llantas (Obligatorio):</p>
-            <label><input type="radio" name="llantas" value="16&quot; Aleación" required> 16" Aleación</label>
-            <label><input type="radio" name="llantas" value="18&quot; Aleación"> 18" Aleación</label>
-            <label><input type="radio" name="llantas" value="20&quot; Deportivo"> 20" Deportivo</label>
-        </div>
+            <br><label><b>Llantas:</b></label>
+            <label>
+                <input name="Llantas" value='16" Aleación' type="radio"> 16" Aleación
+            </label>
+            <label>
+                <input name="Llantas" value='18" Aleación' type="radio"> 18" Aleación
+            </label>
+            <label>
+                <input name="Llantas" value='20" Deportivo' type="radio"> 20" Deportivo
+            </label>
 
-        <div>
-            <p class="section-title">Equipamiento (Obligatorio):</p>
-            <label><input type="radio" name="equipamiento" value="Básico" required> Básico</label>
-            <label><input type="radio" name="equipamiento" value="Confort"> Confort</label>
-            <label><input type="radio" name="equipamiento" value="Premium"> Premium</label>
-        </div>
+            <br><label><b>Equipamiento:</b></label>
+            <label>
+                <input name="Equipamiento" value="Básico" type="radio"> Básico
+            </label>
+            <label>
+                <input name="Equipamiento" value="Confort" type="radio"> Confort
+            </label>
+            <label>
+                <input name="Equipamiento" value="Premium" type="radio"> Premium
+            </label>
+        </fieldset>
 
-        <div>
-            <p class="section-title">Accesorios Opcionales (Opcional):</p>
-            <label><input type="checkbox" name="accesorios[]" value="Techo Panorámico"> Techo Panorámico</label>
-            <label><input type="checkbox" name="accesorios[]" value="Asientos de Cuero"> Asientos de Cuero</label>
-            <label><input type="checkbox" name="accesorios[]" value="Sistema de Sonido Premium"> Sistema de Sonido Premium</label>
-            <label><input type="checkbox" name="accesorios[]" value="Cámara de 360°"> Cámara de 360°</label>
-            <label><input type="checkbox" name="accesorios[]" value="Paquete Deportivo"> Paquete Deportivo</label>
-            <label><input type="checkbox" name="accesorios[]" value="Control de Crucero Adaptativo"> Control de Crucero Adaptativo</label>
-            <label><input type="checkbox" name="accesorios[]" value="Sensores de Aparcamiento"> Sensores de Aparcamiento</label>
-            <label><input type="checkbox" name="accesorios[]" value="Maletero Eléctrico"> Maletero Eléctrico</label>
-        </div>
+        <!-- ================================== ACCESORIOS ================================== -->
 
-        <div>
-            <p class="section-title">Cantidad de Coches (1 a 5):</p>
-            <input type="number" name="cantidad" min="1" max="5" value="1" required>
-        </div>
+        <fieldset>
+            <legend>Accesorios:</legend>
+            <label>
+                <input name="Accesorios[]" value="Techo Panorámico" type="checkbox"> Techo Panorámico
+            </label>
+            <br><label>
+                <input name="Accesorios[]" value="Asientos de Cuero" type="checkbox"> Asientos de Cuero
+            </label>
+            <br><label>
+                <input name="Accesorios[]" value="Sistema de Sonido Premium" type="checkbox"> Sistema de Sonido
+                Premium
+            </label>
+            <br><label>
+                <input name="Accesorios[]" value="Cámara de 360°" type="checkbox"> Cámara de 360°
+            </label>
+            <br><label>
+                <input name="Accesorios[]" value="Paquete Deportivo" type="checkbox"> Paquete Deportivo
+            </label>
+            <br><label>
+                <input name="Accesorios[]" value="Control de Crucero Adaptativo" type="checkbox"> Control de Crucero
+                Adaptativo
+            </label>
+            <br><label>
+                <input name="Accesorios[]" value="Sensores de Aparcamiento" type="checkbox"> Sensores de
+                Aparcamiento
+            </label>
+            <br><label>
+                <input name="Accesorios[]" value="Maletero Eléctrico" type="checkbox"> Maletero Eléctrico
+            </label>
+        </fieldset>
 
-        <div>
-            <p class="section-title">Código de Descuento (Opcional):</p>
-            <input type="text" name="codigo_descuento" maxlength="20" placeholder="Ingresa código">
-        </div>
+        <fieldset>
+            <legend>Otros parámetros</legend>
+            <label>
+                Cantidad de vehículos: <input name="cantidad" type="number" min="1" max="5">
+            </label>
+            <br><label>
+                Código de descuento: <input name="codigo_descuento" type="text">
+            </label>
+        </fieldset>
 
-        <div style="margin-top: 20px;">
-            <button type="submit">Calcular Precio</button>
-        </div>
+        <input type="submit">
     </form>
 </body>
+
 </html>
