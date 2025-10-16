@@ -15,7 +15,7 @@ function alert($text){
 }
 
 /**
- * Función que valida cada componente obligatorio.
+ * Función que valida cada componente obligatorio.      
  * Si falta alguno, se muestra una alerta.
  */
 function validarComponentesObligatorios(){
@@ -34,7 +34,6 @@ function validarComponentesObligatorios(){
  * 2. El valor recibido exista en la lista de valores posibles.
  */
 function validarComponente($nombreComponente){
-
     global $componentes;
     $componenteTieneValor = isset($_POST[$nombreComponente]); // Verifica si el componente fue enviado por POST
 
