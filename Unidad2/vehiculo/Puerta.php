@@ -1,29 +1,26 @@
 <?php
 
-    class Puerta{
+require_once "Ventana.php";
 
-        public $abierta;
-        public Ventana $ventana;
+class Puerta{
+    private $ventana;
+    private $abierta;
 
-
-        public function __construct($abierta=true, $ventana) {
-            $this->abierta = $abierta;
-            $this->ventana = new Ventana;
-        }
-
-        public function abrirCerrar(){
-            $this->abierta = !$this->abierta;
-            $this->ventana->abrirCerrar();
-        }
-
-
-
-        public function __toString(){
-            $estado = $this->abierta ? "abierta" : "cerrada";
-            $estadoVentana = $this->ventana ? "abierta": "cerrada";
-            return "La puerta esta $estado y la ventana esta $estadoVentana";
-        } 
-
-    
-
+    public function __construct() {
+        $this->abierta = false;
+        $this->ventana = new Ventana;
     }
+
+    public function abrirCerrar(){
+        $this->abierta = !$this->abierta;
+    }
+
+    public function abrirCerrarVentana(){
+        $this->ventana->abrirCerrar();
+    }
+
+    public function __toString(){
+        return "Puerta " . $this->abierta ? "abierta" : "cerrada"
+              ." | Ventana de la puerta: $this->ventana";
+    }
+}
