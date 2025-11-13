@@ -1,61 +1,94 @@
 <?php
+
+require_once "Conector.php";
 require_once "Producto.php";
 
-class ProductoModel {
-    private $conexion;
+class ProductoModel
+{
+    private $miConector;
 
-    public function __construct($conexion) {
-        $this->conexion = $conexion;
+    public function __construct()
+    {
+        $this->miConector = new Conector();
     }
 
-    public function obtenerTodos() {
-        echo "<br>==============================================<br>";
-        echo "<h2>Productos</h2>";
+    private function filaAProducto($fila)
+    {
 
-        $stmt = $this->conexion->prepare("SELECT * FROM producto");
-        $stmt->execute();
-        $resultado = $stmt->fetchAll();
+        // TO-DO: si la fila está vacía, la función debe devolver null
+        $id = $fila["ID"];
+        $nombre = $fila["NOMBRE"];
+        $precio = $fila["PRECIO"];
 
-        foreach ($resultado as $fila) {
-            // Creamos un objeto Producto con los datos de la BD
-            $producto = new Producto($fila['id'], $fila['nombre'], $fila['precio']);
+        $producto = new Producto($id, $nombre, $precio);
 
-            echo "Nombre: " . $producto->getNombre() . 
-                 " | Precio: " . $producto->getPrecio();
-
-            echo " <a href='view/editar.php?id=" . $producto->getId() . "'>
-                    <button>Editar</button>
-                   </a>";
-
-            echo " <a href='view/eliminar.php?id=" . $producto->getId() . "' onclick='return confirm(\"¿Seguro que quieres eliminar este producto?\");'>
-                    <button>Eliminar</button>
-                   </a><br>";
-        }
+        return $producto;
     }
 
-    public function obtenerPorId($id) {
-        echo "<br> <h3> Producto obtenido por id </h3>";
+    public function obtenerProductoPorId($id)
+    {
 
-        // Preparar la consulta
-        $stmt = $this->conexion->prepare("SELECT * FROM producto WHERE id = :id");
+        try {
+            $conexion = $this->miConector->conectar();
 
-        // Enlazar el valor del marcador de posición
-        $stmt->bindParam(':id', $id);
+            $consulta = $conexion->prepare("SELECT * FROM PRODUCTOO WHERE id = :id");
+            $consulta->bindParam(':id', $id);
+            $consulta->execute();
 
-        // Asignar el valor y ejecutar la consulta
-        $id = 1;
-        $stmt->execute();
+            $resultadoConsulta = $consulta->fetch();
 
-        $fila = $stmt->fetch();
-
-        if ($fila) {
-            $producto = new Producto($fila['id'], $fila['nombre'], $fila['precio']);
-            echo "Nombre: " . $producto->getNombre() . " | Precio: " . $producto->getPrecio();
-            return $producto;
-        } else {
-            echo "No se encontró ningún producto con ese ID.";
-            return null;
+            $producto = $this->filaAProducto($resultadoConsulta);
+        } catch (PDOException $excepcion) {
+            $producto = null;
         }
 
-            }
+        return $producto;
+    }
+
+    public function obtenerTodosProductos()
+    {
+
+        $conexion = $this->miConector->conectar();
+
+        $consulta = $conexion->prepare("SELECT * FROM PRODUCTO");
+        $consulta->execute();
+
+        $resultadoConsulta = $consulta->fetchAll();
+
+        $productos = [];
+
+        foreach ($resultadoConsulta as $fila) {
+            $productos[] = $this->filaAProducto($fila); //Push de producto
+        }
+
+        return $productos;
+    }
+
+    public function insertarProducto($producto)
+    {
+
+        $conexion = $this->miConector->conectar();
+
+        $consulta = $conexion->prepare("INSERT INTO PRODUCTO(NOMBRE, PRECIO) VALUES (:nombre, :precio)");
+
+        $consulta->bindParam(':nombre', $producto->getNombre());
+        $consulta->bindParam(':precio', $producto->getPrecio());
+
+        return $consulta->execute();
+        // TO-DO: que la función devuelva el producto insertado con su nuevo ID
+
+    }
+
+    public function borrarProductoPorId($id)
+    {
+
+        $conexion = $this->miConector->conectar();
+
+        $consulta = $conexion->prepare("DELETE FROM PRODUCTO WHERE ID=:id");
+
+        $consulta->bindParam(':id', $id);
+
+        return $consulta->execute();
+    }
+
 }

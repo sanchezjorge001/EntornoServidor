@@ -1,39 +1,41 @@
 <?php
 
-class Producto {
+class Producto{
     private $id;
     private $nombre;
     private $precio;
 
-    public function __construct($id = null, $nombre = '', $precio = 0.0) {
+    public function __construct($id, $nombre, $precio) {
         $this->id = $id;
         $this->nombre = $nombre;
         $this->precio = $precio;
     }
 
-    public function getId() {
+    public function setId($id){
+        $this->id = $id;
+    }
+
+    public function getId(){
         return $this->id;
     }
 
-    public function getNombre() {
-        return $this->nombre;
-    }
-
-    public function getPrecio() {
-        return $this->precio;
-    }
-
-    public function setId($id) {
-        $this->id = $id;
-    }
-
-    public function setNombre($nombre) {
+    public function setNombre($nombre){
         $this->nombre = $nombre;
     }
 
-    public function setPrecio($precio) {
+    public function getNombre(){
+        return $this->nombre;
+    }
+
+    public function setPrecio($precio){
         $this->precio = $precio;
     }
-}
 
-?>
+    public function getPrecio(){
+        return $this->precio;
+    }
+
+    public function __tostring(){
+        return "<p>$this->nombre: $this->precio €</p>";
+    }
+}
