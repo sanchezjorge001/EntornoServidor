@@ -1,14 +1,16 @@
 <?php
 
-class Producto{
+class User{
     private $id;
     private $nombre;
-    private $precio;
+    private $contraseña;
+    private $rol;
 
-    public function __construct($id, $nombre, $precio) {
+    public function __construct($id, $nombre, $precio, $rol) {
         $this->id = $id;
         $this->nombre = $nombre;
-        $this->precio = $precio;
+        $this->contraseña = $contraseña;
+        this->rol = $rol;
     }
 
     public function setId($id){
@@ -28,14 +30,23 @@ class Producto{
     }
 
     public function setPrecio($precio){
-        $this->precio = $precio;
+        $this->precio = $contraseña;
     }
 
     public function getPrecio(){
-        return $this->precio;
+        return $this->contraseña;
+    }
+
+    public function setRol($rol){
+        $this->rol = $rol;
+    }
+
+    public function getRol(){
+        return $this->rol;
     }
 
     public function __tostring(){
-        return "<a href='view/detalles.php?id=$this->id'>$this->nombre</a>: $this->precio €";
+        return "<p>Hola</p>";
+    
     }
 }
