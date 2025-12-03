@@ -10,5 +10,6 @@ if (isset($_GET["id"])) {
     $producto = $productoModel->obtenerProductoPorId($id);
 
     echo $producto . "<a href='eliminar.php?id=$id' onclick=\"return confirm('Estás seguro de lo que quieres hacer?')\";><button>🗑</button></a>" . "<a href='editar.php?id=$id'><button>✏</button></a>";
+    echo "<a href='../index.php'><button>Volver</button></a>";
     echo "<br>";
 }

@@ -1,16 +1,42 @@
 <?php
 
-    require_once '../models/UserModel.php';
+session_start();
 
-    if(isset($_SESSION['user_id'])){
-        header('Location: ../../index.php');
-        exit
-    }
+require_once "../../models/UsuarioModel.php";
+require_once "../../models/Usuario.php";
 
-    $error = '';
+$usuarioModel = new UsuarioModel();
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $username = $_POST['username'];
+if (isset($_SESSION["usuario"])) {
+    header("Location: ../../index.php");
+} else if(isset($_POST['email']) && isset($_POST['password'])){
+
+    $email = $_POST['email'];
     $password = $_POST['password'];
-'
-    
+
+    $usuario = $usuarioModel->hacerLogin($email, $password);
+
+    $_SESSION["usuario"] = $usuario;
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Login</title>
+</head>
+
+<body>
+
+    <form method="POST">
+        <label> Correo: <input type="email" name="email"></label><br>
+        <label> Contraseña: <input type="password" name="password"></label>
+        <input type="submit">
+    </form>
+
+</body>
+
+</html>

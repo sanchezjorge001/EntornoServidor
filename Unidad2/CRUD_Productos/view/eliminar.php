@@ -9,8 +9,9 @@ if (isset($_GET["id"])) {
 
     $id = $_GET["id"];
 
-    $productoModel->borrarProductoPorId($id);
+    $productoModel->borrarProductoPorId($id); 
 
+    
 }
 
 header("Location: ../index.php");

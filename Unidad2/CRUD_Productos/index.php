@@ -17,3 +17,4 @@ foreach ($productos as $producto) {
 <a href="view/agregar.php">
     <button>Añadir Producto</button>
 </a>
+

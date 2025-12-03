@@ -35,6 +35,8 @@ if (isset($_POST["nombre"])) {
         <label>Precio: <input name="precio" type="number" step="0.01"></label><br>
         <input type="submit">
     </form>
+
+    <a href="../index.php"><button>Volver</button></a>
 </body>
 
 </html>

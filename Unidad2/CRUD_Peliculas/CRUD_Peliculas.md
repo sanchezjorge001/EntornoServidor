@@ -1,32 +1,38 @@
-Gestión de Películas con Sistema de Usuarios y Administradores
-Descripción: Desarrolla una aplicación web de gestión de películas donde haya dos tipos de usuarios: administradores y usuarios regulares. Los administradores pueden gestionar el catálogo de películas (añadir, editar y eliminar), mientras que los usuarios regulares pueden valorar las películas y dejar comentarios. La aplicación debe seguir el patrón MVC para garantizar una buena separación de responsabilidades y un diseño escalable.
+### Gestión de Películas con Sistema de Usuarios y Administradores
 
-Requisitos de Funcionalidad:
+**Descripción**: 
+Desarrolla una aplicación web de gestión de películas donde haya dos tipos de usuarios: administradores y usuarios regulares. Los administradores pueden gestionar el catálogo de películas (añadir, editar y eliminar), mientras que los usuarios regulares pueden valorar las películas y dejar comentarios. La aplicación debe seguir el patrón MVC para garantizar una buena separación de responsabilidades y un diseño escalable.
 
-Inicio de sesión y roles:
+**Requisitos de Funcionalidad**:
 
-Implementa un sistema de autenticación donde los usuarios puedan registrarse e iniciar sesión.
-Distingue entre dos roles de usuario: "administrador" y "usuario regular".
-Al iniciar sesión, los usuarios se redirigen a una página principal según su rol:
-Usuarios: Redirigidos a una página de exploración de películas.
-Administradores: Redirigidos a una página de administración de películas.
-Funcionalidades de Administrador:
+1. **Inicio de sesión y roles**:
+   - Implementa un sistema de autenticación donde los usuarios puedan registrarse e iniciar sesión.
+   - Distingue entre dos roles de usuario: "administrador" y "usuario regular".
+   - Al iniciar sesión, los usuarios se redirigen a una página principal según su rol:
+     - **Usuarios**: Redirigidos a una página de exploración de películas.
+     - **Administradores**: Redirigidos a una página de administración de películas.
 
-Añadir Película: Los administradores pueden agregar una nueva película al catálogo, proporcionando información como título, sinopsis, año de lanzamiento y género.
-Editar Película: Los administradores pueden editar los detalles de cualquier película existente.
-Eliminar Película: Los administradores pueden eliminar películas del catálogo.
-Funcionalidades de Usuario Regular:
+2. **Funcionalidades de Administrador**:
+   - **Añadir Película**: Los administradores pueden agregar una nueva película al catálogo, proporcionando información como título, sinopsis, año de lanzamiento y género.
+   - **Editar Película**: Los administradores pueden editar los detalles de cualquier película existente.
+   - **Eliminar Película**: Los administradores pueden eliminar películas del catálogo.
 
-Ver Catálogo de Películas: Los usuarios pueden ver una lista de todas las películas disponibles.
-Valorar Película: Los usuarios pueden dar una valoración (de 1 a 10) a cada película.
-Comentar Película: Los usuarios pueden dejar comentarios en cada película.
-Funcionalidades Generales:
+3. **Funcionalidades de Usuario Regular**:
+   - **Ver Catálogo de Películas**: Los usuarios pueden ver una lista de todas las películas disponibles.
+   - **Valorar Película**: Los usuarios pueden dar una valoración (de 1 a 10) a cada película.
+   - **Comentar Película**: Los usuarios pueden dejar comentarios en cada película.
 
-Vistas de Detalle: Cada película debe tener una página de detalles que muestre sus características, valoraciones promedio y comentarios.
-Seguridad: Usa sesiones para autenticar y autorizar a los usuarios y administradores. Las acciones de edición, eliminación y adición de películas deben estar restringidas solo a administradores.
-Estructura de Archivos del Proyecto
+4. **Funcionalidades Generales**:
+   - **Vistas de Detalle**: Cada película debe tener una página de detalles que muestre sus características, valoraciones promedio y comentarios.
+   - **Seguridad**: Usa sesiones para autenticar y autorizar a los usuarios y administradores. Las acciones de edición, eliminación y adición de películas deben estar restringidas solo a administradores.
+
+---
+
+### Estructura de Archivos del Proyecto
+
 Para organizar el proyecto con el patrón MVC, se recomienda la siguiente estructura de archivos y carpetas:
 
+```plaintext
 project/
 │
 ├── index.php                # Archivo de entrada principal
@@ -56,10 +62,12 @@ project/
         ├── addComment.php    # Script para añadir comentario
         ├── addRating.php     # Script para añadir rating
         └── navbar.php        # "Barra" de navegación (se importará en todas las otras páginas)
---
+```
 
-Modifica la aplicación con las siguientes funcionalidades:
-Los administradores pueden borrar comentarios (Aparece un botón al lado del comentario)
-Los administradores pueden resetear las votaciones de una película (Botón en detalle de película)
-Los administradores pueden ver el detalle de un usuario haciendo click en su nombre (por ejemplo en un comentario) y banearlo.
-Banear implica cambiar el nombre por "usuario eliminado" y poner una contraseña aleatoria
+-- 
+
+## Modifica la aplicación con las siguientes funcionalidades:
+   - Los administradores pueden borrar comentarios (Aparece un botón al lado del comentario)
+   - Los administradores pueden resetear las votaciones de una película (Botón en detalle de película)
+   - Los administradores pueden ver el detalle de un usuario haciendo click en su nombre (por ejemplo en un comentario) y banearlo.
+     - Banear implica cambiar el nombre por "usuario eliminado" y poner una contraseña aleatoria

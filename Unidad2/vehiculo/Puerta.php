@@ -11,6 +11,14 @@ class Puerta{
         $this->ventana = new Ventana;
     }
 
+    public function getAbierta(){
+        return $this->abierta;
+    }
+
+    public function getVentana(){
+        return $this->ventana;
+    }
+
     public function abrirCerrar(){
         $this->abierta = !$this->abierta;
     }
@@ -20,7 +28,7 @@ class Puerta{
     }
 
     public function __toString(){
-        return "Puerta " . $this->abierta ? "abierta" : "cerrada"
+        return "Puerta " . ($this->abierta ? "abierta" : "cerrada")
               ." | Ventana de la puerta: $this->ventana";
     }
 }
