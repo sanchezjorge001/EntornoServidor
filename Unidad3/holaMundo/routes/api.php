@@ -1,82 +1,86 @@
 <?php
 
-use App\Models\Usuario;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Calculadora;
+use App\Http\Controllers\UsuarioController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Models\Usuario;
+use Illuminate\Validation\ValidationException;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
-
+// endpoint de tipo GET para la URL /hola/{nombre}
 Route::get('/hola/{nombre?}', function ($nombre = 'Mundo') {
     return response()->json([
         'mensaje' => "Hola, $nombre!",
     ]);
 });
 
-
-Route::get('/sumar/{n1?}/{n2?}', [Calculadora::class, 'sumar']);
-
-Route::get('/numeros/{size}', [Calculadora::class, 'listaNumeros']);
-
-// ================================ API USUARIOS ================================//
-
-
-Route::post('/usuario', function (Request $request) {
-   $data = $request->all();
-
-   $usuarioNuevo = Usuario::create([
-    'nombre' => $data['nombre'],
-    'email' => $data['email'],
-    ]);
-
-    return $usuarioNuevo;
+Route::get('/sumar/{n1}/{n2}', function ($n1, $n2) {
+    $calculadora = new Calculadora();
+    $resultadoSuma = $calculadora->sumar($n1, $n2);
+    return $resultadoSuma;
 });
 
+Route::get('/numeros/{size}', function ($size) {
+    $calculadora = new Calculadora();
+    $numeros = $calculadora->listaNumeros($size);
+    return $numeros;
+});
 
+// =========================== API USUARIOS =========================== //
+
+// Route::post('/usuario', function (Request $request) {
+
+//     $usuarioNuevo = Usuario::create([
+//         'nombre' => $request->input('nombre'),
+//         'email' => $request->input('email'),
+//     ]);
+
+//     return $usuarioNuevo;
+
+// });
 
 Route::get('/usuario', function () {
 
-    $usuarios = Usuario::all();
+    return Usuario::all();
 
-    return $usuarios;
 });
-
 
 Route::get('/usuario/{id}', function ($id) {
 
-    $usuarios = Usuario::find($id);
-
-    return $usuarios;
-});
-
-
-Route:: put('/usuario/{id}', function (Request $request, $id){
-
-
-    $data = $request->all();
-
-
-
-    $usuarioActualizar = Usuario::find($id);
-    $usuarioActualizar->nombre = $data['nombre'];
-    $usuarioActualizar->email = $data['email'];
-    $usuarioActualizar->save();
-
-    return $usuarioActualizar;
+    return Usuario::find($id);
 
 });
 
+Route::post('/usuario', function (Request $request) {
+
+    $controlador = new UsuarioController();
+
+    try {
+        $respuesta = $controlador->insertarUsuario($request);
+    } catch (ValidationException $e) {
+        $respuesta = $e->errors();
+    }
+
+    return $respuesta;
+
+});
+
+Route::put('/usuario/{id}', function ($id, Request $request) {
+
+    $controlador = new UsuarioController();
+
+    try {
+        $respuesta = $controlador->editarUsuario($id,$request);
+    } catch (ValidationException $e) {
+        $respuesta = $e->errors();
+    }
+
+    return $respuesta;
+
+});
 
 Route::delete('/usuario/{id}', function ($id) {
 
-    $usuarioBorrar = Usuario::destroy($id);
+    return Usuario::destroy($id);
 
-    return $usuarioBorrar;
-});     
-
-
-
-
+});
